@@ -27,6 +27,12 @@
     
     NSString *zhz = @"\\d+?(.\\d+)+";
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",zhz];
+    BOOL isValid = [predicate evaluateWithObject:string];
+    if (isValid) {
+        NSLog(@"the string is valid.");
+    }
+    
     NSError *error;
     NSRegularExpression *regx = [NSRegularExpression regularExpressionWithPattern:zhz options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray<NSTextCheckingResult*> *arr = [regx matchesInString:string options:0 range:NSMakeRange(0, string.length)];
