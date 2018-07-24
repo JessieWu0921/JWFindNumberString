@@ -50,12 +50,13 @@
     if (isValid) {
         NSLog(@"the string is valid.");
     }
-    
+    //富文本
     NSMutableAttributedString *aString = [[NSMutableAttributedString alloc] initWithString:string];
+    //设置行距
     NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
     style.lineSpacing = 8.0f;
     [aString addAttributes:@{NSParagraphStyleAttributeName: style} range:NSMakeRange(0, aString.length)];
-    
+    //找出number string
     NSError *error;
     NSRegularExpression *regx = [NSRegularExpression regularExpressionWithPattern:zhz options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray<NSTextCheckingResult*> *arr = [regx matchesInString:string options:0 range:NSMakeRange(0, string.length)];
